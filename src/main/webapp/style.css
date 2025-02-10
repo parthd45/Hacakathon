@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #100D18; /* Updated background color */
+}
+
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: 2px solid #08c7e4;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #08c7e4;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 0 0 10px #08c7e4, 0 0 20px #08c7e4;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.home-button:hover {
+    background: rgba(0, 255, 204, 0.1);
+    box-shadow: 0 0 20px #08c7e4, 0 0 40px #08c7e4;
+    transform: scale(1.1);
+}
+
+.container {
+    position: relative;
+    width: 850px;
+    height: 550px;
+    background: #fff;
+    margin: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 38px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Form Box Styling */
+.form-box {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    text-align: center;
+    padding: 40px;
+    transition: 0.6s ease-in-out;
+}
+
+/* Default: Show Login Form */
+.form-box.login {
+    left: 0;
+}
+
+/* Hide Register Form Initially */
+.form-box.register {
+    right: -50%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* When Active, Show Register & Hide Login */
+.container.active .form-box.login {
+    left: -50%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.container.active .form-box.register {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Form Input Styling */
+.input-box {
+    width: 100%;
+    position: relative;
+    margin: 20px 0;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    background: #eee;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+}
+
+.input-box i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #555;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    height: 48px;
+    background: #7494ec;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #5c7bd5;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 24px;
+    color: #333;
+    margin: 0 8px;
+}
+
+/* Forgot Password Link */
+.forgot-link {
+    margin-top: 10px;
+}
+
+.forgot-link a {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+
+/* Toggle Box */
+.toggle-box {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #08c7e4;
+    z-index: 2;
+    transition: 0.5s ease-in-out;
+    right: 0;
+    border-radius: 0;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -ms-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+}
+
+.container.active .toggle-box {
+    right: 50%;
+}
+
+/* Toggle Panel */
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 3;
+}
+
+.toggle-panel.toggle-left {
+    right: 0;
+    transition-delay: 0.3s;
+}
+
+.container.active .toggle-panel.toggle-left {
+    right: -50%;
+    transition-delay: 0.3s;
+}
+
+.toggle-panel.toggle-right {
+    left: -50%;
+    transition-delay: 0.3s;
+}
+
+.container.active .toggle-panel.toggle-right {
+    left: 0;
+    transition-delay: 0.3s;
+}
+
+.toggle-panel p {
+    margin-bottom: 20px;
+}
+
+.toggle-panel .btn {
+    width: 160px;
+    height: 46px;
+    background: transparent;
+    border: 2px solid #fff;
+    box-shadow: none;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 650px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        width: 90%;
+    }
+
+    .form-box {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 30px;
+    }
+
+    .toggle-box {
+        display: none;
+    }
+
+    .toggle-panel {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .form-box {
+        padding: 20px;
+    }
+
+    .toggle-panel h1 {
+        font-size: 24px;
+    }
+}
+
+.social-icons a:hover {
+    background: #7494ec;
+    color: #fff;
+    border-color: #7494ec;
+}
+
+/* Default Dark Mode */
+body {
+    background-color: #100D18; /* Dark background */
+    color: #ffffff; /* White text */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: #ffffff; /* White background */
+    color: #100D18; /* Dark text */
+}
+
+/* Toggle Button Styling */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: 2px solid #08c7e4;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #08c7e4;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #08c7e4, 0 0 20px #08c7e4;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+/* Toggle Button Hover */
+#theme-toggle:hover {
+    background: rgba(0, 255, 204, 0.1);
+    box-shadow: 0 0 20px #08c7e4, 0 0 40px #08c7e4;
+    transform: scale(1.1);
+}
+
+/* Icon Change on Light Mode */
+body.light-mode #theme-toggle {
+    color: #100D18; /* Change toggle icon to black in light mode */
+    border-color: #100D18; /* Toggle button border turns black */
+}
+
+body.light-mode #theme-toggle:hover {
+    background: rgba(16, 13, 24, 0.1); /* Light mode button hover */
+    box-shadow: 0 0 20px #100D18, 0 0 40px #100D18;
+}
